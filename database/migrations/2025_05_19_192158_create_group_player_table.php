@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('group_player', function (Blueprint $table) {
             $table->id();
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('game_type')->nullable();
-            $table->integer('max_players')->nullable();
-            $table->boolean('active')->default(true);
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
+            $table->foreignId('player_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            
+            $table->unique(['group_id', 'player_id']);
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('group_player');
     }
 };
