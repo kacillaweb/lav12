@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('game_type')->nullable();
