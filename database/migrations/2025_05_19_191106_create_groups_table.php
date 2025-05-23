@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('game_type')->nullable();
             $table->integer('max_players')->nullable();
             $table->boolean('active')->default(true);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
